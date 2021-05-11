@@ -20,6 +20,11 @@ const orderSchema = new mongoose.Schema({
     transaction_id:{},
     amount:{type:Number},
     address: String,
+    status: {
+        type: String,
+        default:"Recieved",
+        enum:["Cancelled","Deliverd","Shipped","processing","Recieved"]
+    },
     updated: Date,
     user:{
         type: ObjectId,
@@ -30,4 +35,4 @@ const orderSchema = new mongoose.Schema({
 
 const Order =  mongoose.model("Order",orderSchema);
 
-// module.exports = mongoose.model(Order, ProductCart);
+module.exports ={Order, ProductCart};
